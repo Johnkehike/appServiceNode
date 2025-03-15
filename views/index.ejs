@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week8</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <main>
+        <div class="add-user-no" id="add-user">
+            <div class="popup" id="popup">
+                <div class="top-section" id="top-section">
+
+                </div>
+                <div class="bottom-section" id="bottom-section">
+                    <form action="/create" method="POST" class="form-add" id="form-add">
+                        <div class="label" id="label">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="label" id="label">
+                            <label for="role">User Role</label>
+                            <input type="text" id="role" name="role" required>
+                        </div>
+                        <div class="label" id="label">
+                            <label for="status">isActive</label>
+                            <input type="checkbox" id="status" name="status" required>
+                        </div>
+                        <div class="label" id="label">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="create-user-btn" id="create-user-btn">
+            <button class="create-btn" id="create-btn">Add New User</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th><i class="fa-solid fa-square-check" style="color: #ffffff;"></i></th>
+                    <th>USER</th>
+                    <th>USER ROLE</th>
+                    <th>STATUS</th>
+                    <th>SOCIAL PROFILE</th>
+                    <th>PROMOTE</th>
+                    <th>RATING</th>
+                    <th>LAST LOGIN</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <!-- <tbody class="tbody" id="tbody"> -->
+
+
+                <!-- <tr>
+                    <td><i class="fa-solid fa-square-check" style="color: #ffffff;" id="check"></i></td>
+                    <td>
+                        <div class="profile" id="profile">
+                            <div class="profile-img" id="profile-img">
+                                <img src="./assets/1.jpg" alt="">
+                            </div>
+                            Jese Leos
+                        </div>
+                    </td>
+                    <td><button class="admin" id="admin"><i class="fa-solid fa-user-tie"></i> Administrator</button></td>
+                    <td> <div class="active" id="active"><i class="fa-solid fa-circle"></i> Active</div> </td>
+                    <td><div class="social" id="social">
+                        <a href="#" class="linkedin" id="linkedin"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="linkedin" id="linkedin"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="linkedin" id="linkedin"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="linkedin" id="linkedin"><i class="fa-brands fa-facebook"></i></a>
+                    </div></td>
+                    <td><div class="toggle" id="toggle">
+                        <i class="fa-solid fa-toggle-on" style="color: #1d63f2;"></i>
+                        <i class="fa-solid fa-toggle-off" style="color: #e7e9ed;"></i>
+                    </div></td>
+                    <td><div class="rating" id="rating">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        4.7
+                    </div></td>
+                    <td class="date">20 Nov 2022</td>
+                    <td><i class="fa-solid fa-ellipsis"></i></td>
+
+                </tr>
+
+                <tr>
+                    <td><i class="fa-solid fa-square-check" style="color: #ffffff;"></i></td>
+                    <td>
+                        <div class="profile" id="profile">
+                            <div class="profile-img" id="profile-img">
+                                <img src="./assets/1.jpg" alt="">
+                            </div>
+                            Jese Leos
+                        </div>
+                    </td>
+                    <td><button class="moderator" id="moderator"><i class="fa-solid fa-user-pen"></i> Moderator</button></td>
+                    <td> <div class="active" id="active"><i class="fa-solid fa-circle"></i> Active</div> </td>
+                    <td><div class="social" id="social">
+                        <a href="#" class="linkedin" id="linkedin"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="linkedin" id="linkedin"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="linkedin" id="linkedin"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="linkedin" id="linkedin"><i class="fa-brands fa-facebook"></i></a>
+                    </div></td>
+                    <td><div class="toggle" id="toggle">
+                        <i class="fa-solid fa-toggle-on" style="color: #1d63f2;"></i>
+                        <i class="fa-solid fa-toggle-off" style="color: #e7e9ed;"></i>
+                    </div></td>
+                    <td><div class="rating" id="rating">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        4.7
+                    </div></td>
+                    <td class="date">20 Nov 2022</td>
+                    <td><i class="fa-solid fa-ellipsis"></i></td>
+
+                </tr>
+
+                <tr>
+                    <td><i class="fa-solid fa-square-check" style="color: #ffffff;"></i></td>
+                    <td>
+                        <div class="profile" id="profile">
+                            <div class="profile-img" id="profile-img">
+                                <img src="./assets/1.jpg" alt="">
+                            </div>
+                            Jese Leos
+                        </div>
+                    </td>
+                    <td><button class="viewer" id="viewer"><i class="fa-solid fa-eye"></i> Viewer</button></td>
+                    <td> <div class="inactive" id="inactive"><i class="fa-solid fa-circle"></i> Inactive</div> </td>
+                    <td><div class="social" id="social">
+                        <a href="#" class="linkedin" id="linkedin"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="linkedin" id="linkedin"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="linkedin" id="linkedin"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="linkedin" id="linkedin"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="twitter" id="twitter"><i class="fa-brands fa-square-twitter"></i></a>
+                        <a href="#" class="google" id="google"><i class="fa-brands fa-google"></i></a>
+                        
+                    </div></td>
+                    <td><div class="toggle" id="toggle">
+                        <i class="fa-solid fa-toggle-on" style="color: #1d63f2;"></i>
+                        <i class="fa-solid fa-toggle-off" style="color: #e7e9ed;"></i>
+                    </div></td>
+                    <td><div class="rating" id="rating">
+                        <i class="fa-solid fa-arrow-down"></i>
+                        4.0
+                    </div></td>
+                    <td class="date">20 Nov 2022</td>
+                    <td><i class="fa-solid fa-ellipsis"></i></td>
+
+                </tr>
+
+                <tr>
+                    <td><i class="fa-solid fa-square-check" style="color: #ffffff;"></i></td>
+                    <td>
+                        <div class="profile" id="profile">
+                            <div class="profile-img" id="profile-img">
+                                <img src="./assets/1.jpg" alt="">
+                            </div>
+                            Jese Leos
+                        </div>
+                    </td>
+                    <td><button class="admin" id="admin"><i class="fa-solid fa-user-tie"></i> Administrator</button></td>
+                    <td> <div class="active" id="active"><i class="fa-solid fa-circle"></i> Active</div> </td>
+                    <td><div class="social" id="social">
+                        <a href="#" class="linkedin" id="linkedin"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="linkedin" id="linkedin"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="linkedin" id="linkedin"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="linkedin" id="linkedin"><i class="fa-brands fa-facebook"></i></a>
+                    </div></td>
+                    <td><div class="toggle" id="toggle">
+                        <i class="fa-solid fa-toggle-on" style="color: #1d63f2;"></i>
+                        <i class="fa-solid fa-toggle-off" style="color: #e7e9ed;"></i>
+                    </div></td>
+                    <td><div class="rating" id="rating">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        4.7
+                    </div></td>
+                    <td class="date">20 Nov 2022</td>
+                    <td><i class="fa-solid fa-ellipsis"></i></td>
+
+                </tr> -->
+
+
+
+            </tbody>
+        </table>
+
+        
+
+        <div class="footer" id="footer">
+            <div class="rows-per-page" id="rows-per-page">
+                <div class="rows-text" id="rows-text">
+                    <p>Rows per page</p>
+                </div>
+                <div class="rows-btn-container" id="rows-btn-container">
+                    <button class="rows-btn" id="rows-btn">
+                        10
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="summary-number" id="summary-number">
+                    <p>1-10 <span>of</span> 100</p>
+                </div>
+            </div>
+
+
+            <div class="page-navigation" id="page-navigation">
+                <!-- <div class="item-container" id="item-container">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div> -->
+
+                <!-- <div class="item-container" id="item-container">
+                    <p>1</p>
+                </div>
+                <div class="item-container" id="item-container">
+                    <p>2</p>
+                </div>
+                <div class="item-container" id="item-container">
+                    <p>3</p>
+                </div>
+                <div class="item-container" id="item-container">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+                <div class="item-container" id="item-container">
+                    <p>100</p>
+                </div> -->
+
+                <!-- <div class="item-container" id="item-container">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div> -->
+            </div>
+        </div>
+    </main>
+    <script src="https://kit.fontawesome.com/9125c408bc.js" crossorigin="anonymous"></script>
+    <script type="module" src="index.js"></script>
+</body>
+</html>
