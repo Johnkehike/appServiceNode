@@ -24,23 +24,6 @@ exports.usersCreatePost = (req, res) => {
     res.redirect("/home");
   };
   
-
-
-
-
-
-
-
-
-
-
-
-// exports.usersCreateGet = (req, res) => {
-//     res.render("createUser", {
-//       title: "Create user",
-//     });
-//   };
-  
   exports.usersSearchGet = (req, res) => {
       const firstName = req.query.firstName
       if (!firstName) {
@@ -79,23 +62,6 @@ exports.usersCreatePost = (req, res) => {
   
   ];
   
-  // We can pass an entire array of middleware validations to our controller.
-//   exports.usersCreatePost = [
-//     validateUser,
-//     (req, res) => {
-//       const errors = validationResult(req);
-//       if (!errors.isEmpty()) {
-//         return res.status(400).render("createUser", {
-//           title: "Create user",
-//           errors: errors.array(),
-//         });
-//       }
-//       const { firstName, lastName, email, age, bio } = req.body;
-//       usersStorage.addUser({ firstName, lastName, email, age, bio });
-//       res.redirect("/");
-//     }
-//   ];
-  
   exports.usersUpdateGet = (req, res) => {
       const user = usersStorage.getUser(req.params.id);
       res.render("update", {
@@ -131,32 +97,14 @@ exports.usersCreatePost = (req, res) => {
 
         
         usersStorage.updateUser(req.params.id, { ...user, name, role, status });
-        res.render("createdUsersGallery", {
-            title: "new Users List",
-            users: usersStorage.getUsers(),
-        });
-      }
-    // exports.usersUpdatePost = [
-    //   validateUser,
-    //   (req, res) => {
-    //     const user = usersStorage.getUser(req.params.id);
-    //     const errors = validationResult(req);
-    //     if (!errors.isEmpty()) {
-    //       return res.status(400).render("home", {
-    //         title: "Update user",
-    //         user: user,
-    //         users: usersStorage.getUsers(),
-    //         errors: errors.array(),
-    //       });
-    //     }
-    //     const { name, role, status, promoted, rating } = req.body;
-    //     usersStorage.updateUser(req.params.id, { name, role, status, promoted, rating });
+        // res.render("createdUsersGallery", {
+        //     title: "new Users List",
+        //     users: usersStorage.getUsers(),
+            
+        // });
+        res.redirect("/home")
         
-    //     res.redirect("/home");
-    //   }
-    // ];
-
-
+      }
   exports.usersDeletePost = (req, res) => {
       usersStorage.deleteUser(req.params.id);
       res.redirect("/home");

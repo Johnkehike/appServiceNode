@@ -94,7 +94,7 @@
                             <td>
                                 <div class="profile" id="profile">
                                     <div class="profile-img" id="profile-img">
-                                        <img src="./assets/1.jpg" alt="">
+                                        <img src="/assets/1.jpg" alt="">
                                     </div>
                                     <%= user.name %>
                                 </div>
@@ -114,15 +114,6 @@
                             <%} else { %>
                                 <td><div class="inactive" id="inactive"><i class="fa-solid fa-circle"></i> Inactive</div></td>
                             <%} %>
-                            <!-- <td>
-                                <div class="toggle" onclick="togglePromotion('<%= user.id %>')">
-                                    <% if (user.promoted) { %>
-                                      <i class="fa-solid fa-toggle-on" style="color: #1d63f2;"></i>
-                                    <% } else { %>
-                                      <i class="fa-solid fa-toggle-off" style="color: #e7e9ed;"></i>
-                                    <% } %>
-                                  </div>
-                            </td> -->
                             <td>
                                 <% if (user.promoted) { %>
                                 <div class="toggle" id="toggle-<%= user.id %>" onclick="togglePromotion('<%= user.id %>')">

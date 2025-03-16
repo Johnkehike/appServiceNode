@@ -24,13 +24,6 @@ window.document.querySelectorAll('.fa-ellipsis').forEach((editContainer) => {
                 editBox.classList.add('edit-container-no');
             }
         }
-        // if (childElement.classList.contains("edit-container-no")) {
-        //     childElement.classList.remove("edit-container-no");
-        //     childElement.classList.add("edit-container");
-        // } else {
-        //     childElement.classList.remove("edit-container");
-        //     childElement.classList.add("edit-container-no");
-        // }
         
     });
 });
@@ -67,41 +60,6 @@ window.document.querySelectorAll('edit-btn').forEach((update) => {
     });
 });
 
-
-// window.editUser = function(userId) {
-//     console.log(userId);
-
-    
-//     fetch(`/${userId}/update`, {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         // body: JSON.stringify({ userId: userId })
-//     })
-
-//     .then(response => response.json())
-//     .catch(error => console.error("Error:", error));
-// }
-// window.editUser.forEach((editSelectedUser) => {
-//     editSelectedUser.addEventListener('click', (e) => {
-//         fetch(`/${userId}/update`, {
-//             method: "POST",
-//             headers: { "Content-Type": "application/json" },
-//             // body: JSON.stringify({ userId: userId })
-//         })
-//     })
-    
-
-    
-// })
-
-// = function(userId){
-//     fetch(`/${userId}/update`, {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         // body: JSON.stringify({ userId: userId })
-//     })
-// }
-
 checkAll.addEventListener('click', (e) => {
     document.querySelectorAll('.check-td').forEach((eachItem) => {
         if (eachItem.children[0].getAttribute('id') === 'check') {
@@ -130,32 +88,9 @@ window.togglePromotion = function(userId) {
         headers: { "Content-Type": "application/json" },
         // body: JSON.stringify({ userId: userId })
     })
-    // .then(response => response.json())
-    // // .then(tBody.innerHTML = ``)
-    // .catch(error => console.error("Error:", error));
-
-    // .then(response => response.json()) // Expecting JSON response
-    // .then(data => {
-    //     if (data.success) {
-    //         const toggleElement = document.getElementById(`toggle-${id}`);
-    //         if (data.promoted) {
-    //             toggleElement.innerHTML = '<i class="fa-solid fa-toggle-on" style="color: #e7e9ed;"></i>';
-    //         } else {
-    //             toggleElement.innerHTML = '<i class="fa-solid fa-toggle-off" style="color: #1d63f2;"></i>';
-    //         }
-    //     } else {
-    //         console.error("Failed to update promotion status");
-    //     }
-    // })
-    // .catch(error => console.error("Error:", error));
-
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-
-            
-
-            // Update the inner HTML based on new promoted status
             toggleElement.innerHTML = data.promoted
                 ? '<i class="fa-solid fa-toggle-on" style="color: #1d63f2;"></i>'
                 : '<i class="fa-solid fa-toggle-off" style="color: #e7e9ed;"></i>';
@@ -164,15 +99,6 @@ window.togglePromotion = function(userId) {
         }
     })
     .catch(error => console.error("Error:", error));
-    
-    // .then(response => {
-    //     if (response.ok) {
-    //         window.location.href = "/home"; // Redirect to /home to refresh the page
-    //     } else {
-    //         console.error("Failed to update promotion status");
-    //     }
-    // })
-    // .catch(error => console.error("Error:", error));
 };
 
 window.document.querySelectorAll('.check-td').forEach((firstTd, index) => {
