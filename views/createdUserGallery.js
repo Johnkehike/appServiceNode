@@ -1,9 +1,106 @@
 let userAddForm = document.getElementById('add-user');
 let createBtn = document.getElementById('create-btn');
+// let updateBtn = document.getElementById('')
 let checkAll = document.getElementById('check-all');
-// let firstI = document.getElementById('check');
 let toggle = document.getElementById('toggle');
 let tBody = document.getElementById('tbody');
+
+
+window.document.querySelectorAll('.fa-ellipsis').forEach((editContainer) => {
+    editContainer.addEventListener('click', (e) => {
+        e.preventDefault();
+        const childElement = e.target.children[0]; // Get the first child element
+        let parentTd = e.target.closest('.last-td');
+
+        let editBox = parentTd.querySelector('.edit-container-no, .edit-container');
+
+        if (editBox) {
+            // Toggle between 'edit-container-no' and 'edit-container'
+            if (editBox.classList.contains('edit-container-no')) {
+                editBox.classList.remove('edit-container-no');
+                editBox.classList.add('edit-container');
+            } else {
+                editBox.classList.remove('edit-container');
+                editBox.classList.add('edit-container-no');
+            }
+        }
+        // if (childElement.classList.contains("edit-container-no")) {
+        //     childElement.classList.remove("edit-container-no");
+        //     childElement.classList.add("edit-container");
+        // } else {
+        //     childElement.classList.remove("edit-container");
+        //     childElement.classList.add("edit-container-no");
+        // }
+        
+    });
+});
+
+
+createBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    userAddForm.classList.remove('add-user-no');
+    userAddForm.classList.add('add-user');
+});
+
+document.getElementById('mark-x').addEventListener('click', (e) => {
+    e.preventDefault();
+    userAddForm.classList.remove('add-user');
+    userAddForm.classList.add('add-user-no');
+});
+
+document.addEventListener('click', (event) => {
+    document.querySelectorAll('.edit-container').forEach((openEditBox) => {
+        if (!openEditBox.closest('.last-td').contains(event.target)) {
+            openEditBox.classList.remove('edit-container');
+            openEditBox.classList.add('edit-container-no');
+        }
+    });
+});
+
+
+
+window.document.querySelectorAll('edit-btn').forEach((update) => {
+    update.addEventListener('click', (e) => {
+        e.preventDefault();
+        userAddForm.classList.remove('update-user-no');
+        userAddForm.classList.add('update-user');
+    });
+});
+
+
+// window.editUser = function(userId) {
+//     console.log(userId);
+
+    
+//     fetch(`/${userId}/update`, {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         // body: JSON.stringify({ userId: userId })
+//     })
+
+//     .then(response => response.json())
+//     .catch(error => console.error("Error:", error));
+// }
+// window.editUser.forEach((editSelectedUser) => {
+//     editSelectedUser.addEventListener('click', (e) => {
+//         fetch(`/${userId}/update`, {
+//             method: "POST",
+//             headers: { "Content-Type": "application/json" },
+//             // body: JSON.stringify({ userId: userId })
+//         })
+//     })
+    
+
+    
+// })
+
+// = function(userId){
+//     fetch(`/${userId}/update`, {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         // body: JSON.stringify({ userId: userId })
+//     })
+// }
 
 checkAll.addEventListener('click', (e) => {
     document.querySelectorAll('.check-td').forEach((eachItem) => {
@@ -90,24 +187,4 @@ window.document.querySelectorAll('.check-td').forEach((firstTd, index) => {
         }
     })
 });
-// firstTd.addEventListener('click', (e) => {
-//     e.preventDefault();
-//     // firstI.style.color = '#34363A';
-//     if (firstI.classList.contains('fa-square-check')) {
-//         // firstI.style.color = '#34363A';
-//         // firstI.classList.remove('fa-solid','fa-square-check');
-//         // firstI.classList.add('fa-solid','fa-square-check-new');
-//         firstI.style.color = '#34363A';
 
-//     }else{
-//         // firstI.style.color = '';
-//         // firstI.classList.remove('fa-solid','fa-square-check-new');
-//         // firstI.classList.add('fa-solid','fa-square-check');
-//     }
-// });
-
-createBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    userAddForm.classList.remove('add-user-no');
-    userAddForm.classList.add('add-user');
-})

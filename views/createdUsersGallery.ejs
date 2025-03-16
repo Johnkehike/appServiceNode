@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     
@@ -13,7 +13,7 @@
         <div class="add-user-no" id="add-user">
             <div class="popup" id="popup">
                 <div class="top-section" id="top-section">
-
+                    <i class="fa-solid fa-square-xmark" id="mark-x"></i>
                 </div>
                 <div class="bottom-section" id="bottom-section">
                     <form action="/create" method="POST" class="form-add" id="form-add">
@@ -38,6 +38,7 @@
         </div>
 
 
+
         <div class="create-user-btn" id="create-user-btn">
             <button class="create-btn" id="create-btn">Add New User</button>
         </div>
@@ -59,6 +60,34 @@
 
                 <% if (users) { %> 
                     <% users.forEach(user => { %> 
+                        <div class="update-user-no" id="update-user">
+                            <div class="popup" id="popup">
+                                <div class="top-section" id="top-section">
+                                    
+                                </div>
+                                <div class="bottom-section" id="bottom-section">
+                                    <form action="/<%= user.id %>/update" method="POST" class="form-add" id="form-add">
+                                        <div class="label" id="label">
+                                            <label for="name">Name</label>
+                                            <input type="text" id="name" name="name" value="<%= user.name %>"  required>
+                                        </div>
+                                        <div class="label" id="label">
+                                            <label for="role">User Role</label>
+                                            <input type="text" id="role" name="role" value="<%= user.role %>"  required>
+                                        </div>
+                                        <div class="label" id="label">
+                                            <label for="status">isActive</label>
+                                            <input type="checkbox" id="status" name="status">
+                                        </div>
+                                        <div class="label" id="label">
+                                            <button type="submit">Submit</button>
+                                        </div>
+                                    </form>
+                                    <a href="/home">Back to home</a>
+                                </div>
+                            </div>
+                        </div>
+
                         <tr onmouseenter="this.style.backgroundColor = '#F3F5F7'" 
                             onmouseleave="this.style.backgroundColor = ''">
                             <td id="check-td" class="check-td"><i class="fa-solid fa-square-check"  id="check"></i></td>
@@ -99,7 +128,7 @@
                                 <div class="toggle" id="toggle-<%= user.id %>" onclick="togglePromotion('<%= user.id %>')">
                                     <i class="fa-solid fa-toggle-on" style="color: #1d63f2;"></i>
                                 </div>
-                                    <% } else { %>
+                                    <% } else if(!user.promoted) { %>
                                         <div class="toggle" id="toggle-<%= user.id %>" onclick="togglePromotion('<%= user.id %>')">
                                             <i class="fa-solid fa-toggle-off" style="color: #e7e9ed;"></i>
                                         </div>
@@ -117,7 +146,25 @@
                                 <%= user.rating %>
                             </div></td>
                             <td class="date">20 Nov 2022</td>
-                            <td><i class="fa-solid fa-ellipsis"></i></td>
+                            <td class="last-td">
+                                <i class="fa-solid fa-ellipsis"></i>
+                                <div class="edit-container-no" id="edit-container">
+                                    <div class="edit" id="edit">
+                                        <!-- href="/<%= user.id %>/update" -->
+                                    <a class="edit-btn"  href="/<%= user.id %>/update">
+                                            
+                                            Edit
+                                    </a>
+                                    </div>
+                                    <div class="delete" id="delete">
+                                        <form action="/<%= user.id %>/delete" method="POST" style="display:inline;">
+                                            <button type="submit" class="delete-btn" id="delete-btn" onclick="return confirm('Are you sure you want to delete this user?');">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     <% }) %>   
                 <% } %>
@@ -257,7 +304,7 @@
 
         
 
-        <div class="footer" id="footer">
+        <!-- <div class="footer" id="footer">
             <div class="rows-per-page" id="rows-per-page">
                 <div class="rows-text" id="rows-text">
                     <p>Rows per page</p>
@@ -274,7 +321,7 @@
             </div>
 
 
-            <div class="page-navigation" id="page-navigation">
+            <div class="page-navigation" id="page-navigation"> -->
                 <!-- <div class="item-container" id="item-container">
                     <i class="fa-solid fa-chevron-left"></i>
                 </div> -->
@@ -298,8 +345,14 @@
                 <!-- <div class="item-container" id="item-container">
                     <i class="fa-solid fa-chevron-right"></i>
                 </div> -->
-            </div>
-        </div>
+            <!-- </div>
+
+
+
+        </div> -->
+
+
+
     </main>
     <script src="https://kit.fontawesome.com/9125c408bc.js" crossorigin="anonymous"></script>
     <script src="createdUserGallery.js" type="module"></script>

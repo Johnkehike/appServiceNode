@@ -254,7 +254,21 @@ tr{
 .add-user-no{
     display: none;
 }
+.update-user-no{
+    display: none;
+}
 .add-user{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.update-user{
     position: absolute;
     top: 0;
     left: 0;
@@ -282,6 +296,7 @@ tr{
     background-color: #F1F1F1;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
+    text-align: end;
 }
 .bottom-section{
     /* padding: 1rem 0.5rem; */
@@ -342,6 +357,80 @@ tr{
 }
 
 
+.last-td{
+    position: relative;
+}
+.edit-container{
+    /* position: absolute;
+    right: 2rem;
+    top: 0;
+    border: 1px solid;
+    padding: 0.6rem 0.4rem;
+    border-radius: 0.6rem;
+    display: flex;
+    flex-direction: column; */
+
+    width: 6rem;
+    position: absolute;
+    right: 2rem;
+    top: 0;
+    border: 1px solid;
+    padding: 0.6rem 0rem;
+    border-radius: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    /* row-gap: 0.4rem; */
+    justify-content: space-between;
+}
+.edit-container-no{
+    display: none;
+}
+.edit{
+    width: 100%;
+}
+.edit-btn{
+    width: 100%;
+    display: flex;
+    padding: 0.2rem 0.3rem;
+    outline: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: #717375;
+    text-align: center;
+    font-weight: 600;
+}
+.edit-btn:hover{
+    background-color: #717375;
+    color: white;
+}
+.delete{
+    width: 100%;
+}
+.delete-btn{
+    width: 100%;
+    display: flex;
+    padding: 0.2rem 0.3rem;
+    outline: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #717375;
+    font-size: medium;
+}
+.delete-btn:hover{
+    background-color: #717375;
+    color: white;
+}
+
+.fa-square-xmark{
+    font-size: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    cursor: pointer;
+}
 
 
 /* .pagination-container {

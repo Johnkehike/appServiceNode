@@ -98,55 +98,66 @@ exports.usersCreatePost = (req, res) => {
   
   exports.usersUpdateGet = (req, res) => {
       const user = usersStorage.getUser(req.params.id);
-      res.render("updateUser", {
+      res.render("update", {
         title: "Update user",
+        users: usersStorage.getUsers(),
         user: user,
       });
     };
 
     exports.toggle=(req, res) =>{
-
-
-
         const user = usersStorage.getUser(req.params.id);  // Get existing user
-        
-        
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
-    
         // Toggle the promoted status
         const updatedUser = {
-            ...user,  // Keep existing user data
-            promoted: !user.promoted  // Toggle the promoted value
+            ...user,  
+            promoted: !user.promoted  
         };
-    
         usersStorage.updateUser(req.params.id, updatedUser);
         res.json({ success: true, promoted: updatedUser.promoted });
         // res.redirect("/home");
         res.redirect("/home");
       };
 
-    exports.usersUpdatePost = [
-      validateUser,
-      (req, res) => {
-        const user = usersStorage.getUser(req.params.id);
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-          return res.status(400).render("updateUser", {
-            title: "Update user",
-            user: user,
-            errors: errors.array(),
-          });
+      exports.usersUpdatePost=(req, res) => {
+        const user = usersStorage.getUser(req.params.id); 
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
         }
-        const { firstName, lastName } = req.body;
-        usersStorage.updateUser(req.params.id, { firstName, lastName, email, age, bio });
-        res.redirect("/");
+
+        const { name, role, status} = req.body;
+
+        
+        usersStorage.updateUser(req.params.id, { ...user, name, role, status });
+        res.render("createdUsersGallery", {
+            title: "new Users List",
+            users: usersStorage.getUsers(),
+        });
       }
-    ];
+    // exports.usersUpdatePost = [
+    //   validateUser,
+    //   (req, res) => {
+    //     const user = usersStorage.getUser(req.params.id);
+    //     const errors = validationResult(req);
+    //     if (!errors.isEmpty()) {
+    //       return res.status(400).render("home", {
+    //         title: "Update user",
+    //         user: user,
+    //         users: usersStorage.getUsers(),
+    //         errors: errors.array(),
+    //       });
+    //     }
+    //     const { name, role, status, promoted, rating } = req.body;
+    //     usersStorage.updateUser(req.params.id, { name, role, status, promoted, rating });
+        
+    //     res.redirect("/home");
+    //   }
+    // ];
 
 
   exports.usersDeletePost = (req, res) => {
       usersStorage.deleteUser(req.params.id);
-      res.redirect("/");
+      res.redirect("/home");
     };
