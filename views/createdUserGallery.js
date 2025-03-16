@@ -1,15 +1,33 @@
 let userAddForm = document.getElementById('add-user');
 let createBtn = document.getElementById('create-btn');
-let firstTd = document.getElementById('check-td');
-let firstI = document.getElementById('check');
+let checkAll = document.getElementById('check-all');
+// let firstI = document.getElementById('check');
 let toggle = document.getElementById('toggle');
 let tBody = document.getElementById('tbody');
 
-// toggle.addEventListener('click', (e) => {
+checkAll.addEventListener('click', (e) => {
+    document.querySelectorAll('.check-td').forEach((eachItem) => {
+        if (eachItem.children[0].getAttribute('id') === 'check') {
+            eachItem.children[0].style.color = '#34363A';
+            eachItem.children[0].setAttribute('id', 'uncheck');
+            checkAll.children[0].style.color = '#34363A';
+            checkAll.children[0].setAttribute('id','uncheck-all')
+        } else {
+            eachItem.children[0].style.color = '';
+            eachItem.children[0].setAttribute('id', 'check');
+            checkAll.children[0].style.color = '';
+            checkAll.children[0].setAttribute('id','check-all');
+        }
+    })
+});
 
-// })
-// function togglePromotion(userId){
+
+
+
+
 window.togglePromotion = function(userId) {
+    const toggleElement = document.getElementById(`toggle-${userId}`);
+    
     fetch(`/${userId}/toggle`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -37,7 +55,8 @@ window.togglePromotion = function(userId) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            const toggleElement = document.getElementById(`toggle-${userId}`);
+
+            
 
             // Update the inner HTML based on new promoted status
             toggleElement.innerHTML = data.promoted
@@ -59,21 +78,33 @@ window.togglePromotion = function(userId) {
     // .catch(error => console.error("Error:", error));
 };
 
-firstTd.addEventListener('click', (e) => {
-    e.preventDefault();
-    // firstI.style.color = '#34363A';
-    if (firstI.classList.contains('fa-square-check')) {
-        // firstI.style.color = '#34363A';
-        firstI.classList.remove('fa-solid','fa-square-check');
-        firstI.classList.add('fa-solid','fa-square-check-new');
-        firstI.style.color = '#34363A';
-
-    }else{
-        // firstI.style.color = '';
-        firstI.classList.remove('fa-solid','fa-square-check-new');
-        firstI.classList.add('fa-solid','fa-square-check');
-    }
+window.document.querySelectorAll('.check-td').forEach((firstTd, index) => {
+    firstTd.addEventListener('click', (e) => {
+        console.log(firstTd);
+        if (firstTd.children[0].getAttribute('id') === 'check') {
+            firstTd.children[0].style.color = '#34363A';
+            firstTd.children[0].setAttribute('id', 'uncheck');
+        } else {
+            firstTd.children[0].style.color = '';
+            firstTd.children[0].setAttribute('id', 'check');
+        }
+    })
 });
+// firstTd.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     // firstI.style.color = '#34363A';
+//     if (firstI.classList.contains('fa-square-check')) {
+//         // firstI.style.color = '#34363A';
+//         // firstI.classList.remove('fa-solid','fa-square-check');
+//         // firstI.classList.add('fa-solid','fa-square-check-new');
+//         firstI.style.color = '#34363A';
+
+//     }else{
+//         // firstI.style.color = '';
+//         // firstI.classList.remove('fa-solid','fa-square-check-new');
+//         // firstI.classList.add('fa-solid','fa-square-check');
+//     }
+// });
 
 createBtn.addEventListener('click', (e) => {
     e.preventDefault();

@@ -44,7 +44,7 @@
         <table>
             <thead>
                 <tr>
-                    <th><i class="fa-solid fa-square-check" style="color: #ffffff;"></i></th>
+                    <th id="check-all" class="check-all"><i class="fa-solid fa-square-check" style="color: #ffffff;"></i></th>
                     <th>USER</th>
                     <th>USER ROLE</th>
                     <th>STATUS</th>
@@ -61,7 +61,7 @@
                     <% users.forEach(user => { %> 
                         <tr onmouseenter="this.style.backgroundColor = '#F3F5F7'" 
                             onmouseleave="this.style.backgroundColor = ''">
-                            <td id="check-td"><i class="fa-solid fa-square-check" style="color: #ffffff;" id="check"></i></td>
+                            <td id="check-td" class="check-td"><i class="fa-solid fa-square-check"  id="check"></i></td>
                             <td>
                                 <div class="profile" id="profile">
                                     <div class="profile-img" id="profile-img">
@@ -85,7 +85,7 @@
                             <%} else { %>
                                 <td><div class="inactive" id="inactive"><i class="fa-solid fa-circle"></i> Inactive</div></td>
                             <%} %>
-                            <td>
+                            <!-- <td>
                                 <div class="toggle" onclick="togglePromotion('<%= user.id %>')">
                                     <% if (user.promoted) { %>
                                       <i class="fa-solid fa-toggle-on" style="color: #1d63f2;"></i>
@@ -93,6 +93,23 @@
                                       <i class="fa-solid fa-toggle-off" style="color: #e7e9ed;"></i>
                                     <% } %>
                                   </div>
+                            </td> -->
+                            <td>
+                                <% if (user.promoted) { %>
+                                <div class="toggle" id="toggle-<%= user.id %>" onclick="togglePromotion('<%= user.id %>')">
+                                    <i class="fa-solid fa-toggle-on" style="color: #1d63f2;"></i>
+                                </div>
+                                    <% } else { %>
+                                        <div class="toggle" id="toggle-<%= user.id %>" onclick="togglePromotion('<%= user.id %>')">
+                                            <i class="fa-solid fa-toggle-off" style="color: #e7e9ed;"></i>
+                                        </div>
+                                        <% } %>
+                                    <!-- <% if (user.promoted) { %> -->
+                                        <!-- <i class="fa-solid fa-toggle-on" style="color: #1d63f2;"></i> -->
+                                    <!-- <% } else { %> -->
+                                        <!-- <i class="fa-solid fa-toggle-off" style="color: #e7e9ed;"></i> -->
+                                    <!-- <% } %> -->
+                                <!-- </div> -->
                             </td>
 
                             <td><div class="rating" id="rating">

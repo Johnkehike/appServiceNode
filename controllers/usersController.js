@@ -124,6 +124,7 @@ exports.usersCreatePost = (req, res) => {
         usersStorage.updateUser(req.params.id, updatedUser);
         res.json({ success: true, promoted: updatedUser.promoted });
         // res.redirect("/home");
+        res.redirect("/home");
       };
 
     exports.usersUpdatePost = [
